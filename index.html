@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Earning Rewards</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    /* === Page background / overall === */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      /* dark blue/green gradient + subtle neon-green glow top-left */
+      background:
+        radial-gradient(circle at 12% 10%, rgba(110,222,149,0.06), transparent 8%),
+        linear-gradient(135deg, #03181e 0%, #071a27 40%, #0b0f21 100%);
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* === Card (KEPT SIZE/STRUCTURE) === */
+    .card {
+      /* switched to dark-tinted card with soft neon glow */
+      background: rgba(8,10,12,0.98);
+      border-radius: 24px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 0 40px rgba(110,222,149,0.06);
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      padding: 36px 28px;
+      position: relative;
+    }
+
+    /* === Logo box (same size, image placeholder kept) === */
+    .logo {
+      width: 110px;
+      height: 110px;
+      border-radius: 26px;
+      overflow: hidden;
+      background: #0b0b0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 26px;
+      display: block;
+    }
+
+    /* === Headings & text (kept typography / sizes) === */
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 8px 0;
+      /* white on dark card */
+      color: #ffffff;
+    }
+
+    .amount {
+      font-size: 42px;
+      font-weight: 800;
+      /* primary green matched to logo */
+      color: #6EDE95;
+      margin-top: 8px;
+      animation: glow 2s infinite ease-in-out;
+    }
+
+    .subtext {
+      color: #d7e8dd; /* soft pale text on tinted card */
+      margin-bottom: 28px;
+      font-size: 16px;
+    }
+
+    /* === Steps box (kept same size, but light tinted bg) === */
+    .steps {
+      text-align: left;
+      background: rgba(12,20,14,0.6);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(110,222,149,0.06);
+    }
+
+    .step {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .step-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #6EDE95; /* logo green */
+      color: #04120c;
+      font-weight: 600;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 15px;
+      color: #e6f6ea;
+    }
+
+    /* === CTA (same size/shape, green gradient replaced) === */
+    .cta {
+      display: block;
+      text-decoration: none;
+      background: linear-gradient(135deg, #85f1b5 0%, #38c77a 100%); /* gentle gradient using logo tones */
+      color: #04120c;
+      font-weight: 600;
+      font-size: 18px;
+      padding: 16px 0;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 6px 30px rgba(110,222,149,0.06);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.45), 0 0 32px rgba(110,222,149,0.12);
+    }
+
+    /* === Trust section === */
+    .trust {
+      margin-top: 0px;
+      color: #d7e8dd;
+      font-size: 15px;
+    }
+
+    .trust img {
+      height: 95px;
+      margin-top: -20px;
+      filter: brightness(1.2);
+    }
+
+    /* === Glow animation for amount === */
+    @keyframes glow {
+      0% { text-shadow: 0 0 0 rgba(110,222,149,0.0); }
+      50% { text-shadow: 0 0 18px rgba(110,222,149,0.35); }
+      100% { text-shadow: 0 0 0 rgba(110,222,149,0.0); }
+    }
+
+    .floating-cta {
+      display: none;
+    }
+
+    @media (max-width: 500px) {
+      .floating-cta {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #85f1b5 0%, #38c77a 100%);
+        color: #04120c;
+        font-weight: 600;
+        font-size: 17px;
+        padding: 14px 24px;
+        border-radius: 50px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        text-decoration: none;
+        z-index: 100;
+      }
+    }
+
+    .review-box {
+      margin-top: 25px;
+      background: rgba(6,12,8,0.45);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 15px;
+      color: #dbeee0;
+      border: 1px solid rgba(110,222,149,0.05);
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">
+      <!-- Replace this image src with your own logo (keeps exact same size) -->
+      <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/6106a7e4f66385001d52966b/0x0.png" alt="Logo" />
+    </div>
+    <h1>Start Earning Instantly</h1>
+    <div class="amount" id="amount">£1</div>
+    <div class="subtext">Cash rewards delivered straight to you</div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-text">Click below to get started</div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-text">Play games & Complete easy tasks</div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-text">Withdraw to PayPal, crypto, or gift cards</div>
+      </div>
+      <div class="step">
+        <div class="step-number">💡</div>
+        <div class="step-text"><strong>Tip:</strong> Age 21+ get the best offers</div>
+      </div>
+    </div>
+
+    <a href="#" class="cta">Start Earning Now →</a>
+
+    <div class="review-box" id="reviewBox">💬 “Made my first £10 in 10 minutes!” – Jake P.</div>
+
+    <div class="trust">
+      Trusted by thousands worldwide
+      <br />
+      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/trustpilot-logo-white-icon.png" alt="Trust badge" />
+    </div>
+  </div>
+
+  <a href="#" class="floating-cta">Start Earning</a>
+
+  <script>
+    // Animated counter
+    let val = 1;
+    const el = document.getElementById("amount");
+    function animateCounter() {
+      val++;
+      if (val > 999) val = 1;
+      el.textContent = `£${val}`;
+    }
+    setInterval(animateCounter, 50);
+
+    // Reviews
+    const reviews = [
+      "💬 “Made my first £10 in 10 minutes!” – Jake P.",
+      "⭐ “Did 3 offers and got £53 same day!” – Lauren K.",
+      "🔥 “Actually paid out to PayPal instantly.” – Mark D.",
+      "💰 “Free money while watching TV 😂” – Sam R.",
+      "✅ “No scam, just quick rewards.” – Chloe B.",
+      "🎯 “Used this daily now, love it.” – Ryan T.",
+      "💸 “Cashed out £154 last week.” – Ellie S.",
+      "📱 “Fun side hustle tbh.” – Josh L.",
+      "💵 “Got my Amazon gift card same day.” – Emma J.",
+      "😎 “Didn’t expect it to work, but it did.” – Ben A.",
+      "🚀 “Good if you’ve got spare time.” – Lewis M.",
+      "💎 “Pays faster than survey sites.” – Amy H.",
+      "🤑 “Nice for little extra cash here and there.” – Tom W.",
+      "💼 “Better than any cashback app I’ve used.” – Mia C.",
+      "🙌 “Hit £230 total earnings today!” – Oscar F."
+    ];
+
+    const box = document.getElementById("reviewBox");
+    let lastIndex = -1;
+
+    function showRandomReview() {
+      let index;
+      do {
+        index = Math.floor(Math.random() * reviews.length);
+      } while (index === lastIndex);
+      lastIndex = index;
+      box.style.opacity = 0;
+      setTimeout(() => {
+        box.textContent = reviews[index];
+        box.style.opacity = 1;
+      }, 500);
+
+      const nextDelay = Math.floor(Math.random() * (15000 - 2000 + 1)) + 2000;
+      setTimeout(showRandomReview, nextDelay);
+    }
+
+    setTimeout(showRandomReview, 3000);
+  </script>
+</body>
+</html>
